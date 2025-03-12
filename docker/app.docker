@@ -1,0 +1,20 @@
+FROM php:<<PHP_VERSION>>
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+RUN apt-get install -y wget libmcrypt-dev mysql-client unzip gnupg libpng-dev  && docker-php-ext-install pdo_mysql
+
+#Conscube stuff
+RUN apt-get install -y gcc nasm libtool dh-autoreconf
+
+RUN curl -sS https://getcomposer.org/installer -o composer-setup.php
+RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+RUN curl -sL https://deb.nodesource.com/setup_<<NODE_VERSION>> | bash && apt-get install -y nodejs &&  npm i -g npm && npm -v
+RUN npm install --global webpack
+
+RUN apt-get install curl
+
+WORKDIR /var/www
+

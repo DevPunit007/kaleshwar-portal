@@ -1,0 +1,26 @@
+// Variables
+@import 'variables';
+
+// Bootstrap
+$theme-colors: (
+    "primary": #650000,
+    "secondary": #c1a144
+);
+@import '~bootstrap/scss/bootstrap';
+
+// Gull Theme
+$primary: #650000;
+$secondary: #c1a144;
+@import '../extensions/gull/styles/sass/themes/lite-purple';
+
+// Data Tables Plugin Style
+@import '../extensions/DataTables/datatables.min.css';
+
+// Fontawesome
+@import '../extensions/fontawesome-pro/css/all.min.css';
+
+// custom jQuery UI
+@import 'custom-jquery-ui';
+
+// Hopscotch
+@import '../extensions/hopscotch/dist/css/hopscotch.min.css';

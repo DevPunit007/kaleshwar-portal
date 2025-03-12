@@ -1,0 +1,439 @@
+/* global css classes (should be small and style few values so that they can be reused often) */
+/* Bootstrap calls classes like these 'utilities'. */
+
+/* CSS for the Admin-Portal */
+
+body {
+    font-size: 0.85rem;
+}
+
+a {
+    color: #650000;
+}
+
+h6 {
+    margin-bottom: 1rem;
+    color: #650000;
+}
+
+.color-gray {
+	color: #808080 !important;
+}
+
+.color-green {
+	color: green !important;
+}
+
+.color-theme-dark {
+	color: #990000 !important;
+}
+
+.form-div-control {
+    outline: initial !important;
+    background: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    color: #212529;
+    width: 100%;
+    min-height: 37px;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.bg-regular {
+    background-color: #dbddde !important;
+}
+
+.bg-info {
+    background-color: #a8dafd !important;
+}
+
+.op-7 {
+	opacity: 0.7;
+}
+
+select:invalid { color: gray; }
+
+/**
+* 	MENU
+*/
+
+.mega-menu .dropdown-menu {
+    width: 70%;
+}
+
+.menu-icon-grid > a {
+    width: 7rem;
+}
+
+.layout-horizontal-bar .header-topnav .topnav .menu-title {
+    padding: 13px 10px;
+    font-size: 0.85rem;
+    height: 40px;
+}
+
+.color-brand-blue {
+    background-color: rgb(0, 93, 178);
+}
+
+td.details-control {
+    /*background: url('/images/details_open.png') no-repeat center center;*/
+    cursor: pointer;
+}
+tr.shown td.details-control svg {
+    /*background: url('/images/details_close.png') no-repeat center center;*/
+    /*color: grey;*/
+}
+
+.hover-bg-gray:hover {
+    background-color: #f8f9fa!important;
+}
+
+/**
+* 	dataTable
+*/
+
+tr.group td {
+    background-color: #ebe7e2;
+    border-bottom: 1px solid #ddb279;
+    font-weight: 900;
+}
+
+.table-icon {
+    width: 40px !important;
+}
+
+.status_blocked {
+    text-decoration: line-through;
+}
+/**
+* 	ICONS
+*/
+.fad  {
+    color: #650000;
+}
+
+
+/**
+* 	ADMIN CARDS
+*/
+
+.card-header h5 {
+    color: #797979;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.nav-tabs .nav-item .nav-link {
+    padding: 10px 20px;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+    background: rgba(101, 0, 0, 0.1);
+}
+
+.btn-header {
+	padding: 0.28rem 0.75rem;
+    margin: 0 5px;
+}
+
+.form-group {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 15px;
+}
+
+.form-row .form-group {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.form-control input, .input-group .form-control {
+    height: 37px !important;
+}
+
+.input-group-append .btn {
+    border: 1px solid;
+}
+
+/**
+* 	DATATABLE
+*/
+
+.nowrap {
+    white-space: nowrap;
+}
+
+#select-filter-table>select {
+    height: 36px;
+    min-width: 100px;
+    border: 1px solid #6cb2eb;
+    color: #6cb2eb;
+    background: none;
+    margin-right: 10px;
+}
+
+/**
+* 	IFRAME
+*/
+
+body.event-frame {
+    background: transparent !important;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.row.iframe-view {
+    padding: 10px;
+}
+
+.row.event {
+    margin-bottom: 15px;
+}
+
+.nav-link {
+    border-radius: unset !important;
+}
+
+a.nav-link {
+    color: #797978 !important;
+    font-size: 0.9rem;
+}
+
+.nav-item {
+    margin-right: 0.5rem;
+}
+
+.nav-link.active {
+    color: #650000 !important;
+    background-color: #e9ecef !important;
+}
+
+@media (max-width: 767px) {
+    a.nav-link {
+        margin: 0.5rem 0;
+    }
+}
+.user-account-section {
+    border-left: 1px solid lightgray;
+    min-height: 504px;
+}
+
+/**
+* 	FRONTEND CARDS
+*/
+
+.card {
+    box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-header {
+    background-color: #eae7e2;
+    color: #650000;
+}
+
+.card-header h6 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin: 5px;
+    color: #650000;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    margin-bottom: 1.1rem;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    color: #777;
+    margin: 2.5rem 0 1rem;
+    padding-left: 40px;
+    background: url(/images/card-subtitle-graphic.gif) 0px 3px;
+    background-repeat: no-repeat;
+}
+
+/* List group in cards */
+.list-group-item {
+    padding: 0.6rem 1rem;
+}
+
+.list-scroll {
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+
+/* Button Bar at admin cards. */
+.button-bar {
+    position: absolute;
+    cursor: pointer;
+    top: -45px;
+    right: 2em;
+}
+@media screen and (max-width: 767px) {
+    .button-bar {
+        position: relative;
+        cursor: pointer;
+        top: 0px;
+        left: 0px;
+        padding: 15px 20px;
+        border-top: 1px solid #dbdbdb;
+        border-bottom: 1px solid #dbdbdb;
+        background-color: #eae7e2;
+    }
+}
+
+.introduction {
+    margin-bottom: 1.2em;
+    min-height: 50px;
+}
+
+.event-sidebar {
+    font-size: 0.8rem;
+}
+
+hr.divider-sidebar, hr.divider {
+    margin: 1rem 0;
+}
+
+hr.divider-sidebar:last-child {
+    /*display: none;*/
+}
+
+.location {
+    margin-bottom: 0px !important;
+}
+
+.btn-event-info {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+}
+
+.event-details-table {
+    margin: 20px 20px;
+}
+
+.event-details-table td {
+    min-width: 100px;
+    height: 35px;
+}
+
+.event-details-table-sidebar td {
+    min-width: 90px;
+    height: 30px;
+    font-size: 0.8rem;
+}
+
+.far {
+    color: #650000;
+}
+
+.custom-select {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+}
+
+.form-group label {
+    font-size: 13px;
+}
+
+/**
+* 	SWITCH
+*/
+
+.toggle label {
+	position: relative;
+	display: inline-block;
+	width: 10em;
+	height: 3.5em;
+}
+
+.toggle input {
+	display: none;
+}
+
+.toggle .slider {
+	/* Grundfläche */
+
+	position: absolute;
+	cursor: pointer;
+	top: 2.7em;
+	right: 2em;
+	width: 2.5em;
+	height: 1.5em;
+	background-color: #640000;
+	/* red */
+
+	transition: all .3s ease-in-out;
+	border-radius: 1em;
+}
+
+.toggle .slider:before {
+	/* verschiebbarer Button */
+
+	position: absolute;
+	content: "";
+	height: 1.1em;
+    width: 1.1em;
+    left: 0.2em;
+    bottom: 0.2em;
+	background-color: white;
+	border-radius: 50%;
+	transition: all .3s ease-in-out;
+}
+
+.toggle input:checked + .slider {
+	background-color: #650000;
+	/* green */
+}
+
+.toggle input:focus + .slider {
+	background-color: pink;
+	box-shadow: 0 0 1px #5a9900;
+}
+
+.toggle input:checked + .slider:before {
+	-webkit-transform: translateX(1.2em);
+	/* Android 4 */
+
+	-ms-transform: translateX(1.2em);
+	/* IE9 */
+
+	transform: translateX(1.2em);
+}
+
+@media print {
+    @page {
+        size: A4 landscape;
+    }
+
+    .dataTables_length, .dataTables_filter, tfoot, .dataTables_paginate, .table-icon {
+        display: none !important;
+    }
+
+    .layout-horizontal-bar .main-content-wrap {
+        margin-top: 0px !important;
+    }
+
+    .container {
+        max-width: 100% !important;
+        padding: 0;
+        margin: 0;
+    }
+
+    .card-body {
+        padding: 0;
+    }
+
+}
+
+

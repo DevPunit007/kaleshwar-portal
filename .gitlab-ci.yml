@@ -1,0 +1,51 @@
+variables:
+  SUBDOMAIN: "oneloginEvent"
+  DOMAIN: "singular-it-dev.de"
+  MONITORING_DOMAIN: "singular-it.de"
+  PHP_VERSION: "7-fpm"
+  NODE_VERSION: "8.x"
+  MY_SQL_VERSION: "5.6"
+  NGINX_VERSION: "1.10"
+  MYSQL_DATABASE: "dockerApp"
+  X_GITLAB_TOKEN: "ericweb"
+  NPM_RUN: "prod"
+
+
+deploy_master:
+  stage: deploy
+  script:
+     - let "dbport=30000+$CI_PROJECT_ID"
+     - sudo curl -X POST https://intranet.$MONITORING_DOMAIN/api/hooks/gitlab-ci -H "Cache-Control:no-cache" -H "Content-Type:application/json" -H "x-gitlab-token:$GITLAB_HOOK_SECURITY_TOKEN"   -d "{    \"job\":\"start\", \"DB_ROOT_PW\":\"$DB_ROOT_PW\", \"GITLAB_USER_EMAIL\":\"$GITLAB_USER_EMAIL\",  \"CI_COMMIT_TITLE\":\"$CI_COMMIT_TITLE\",  \"CI_JOB_ID\":\"$CI_JOB_ID\",    \"CI_COMMIT_SHA\":\"$CI_COMMIT_SHA\",    \"CI_REPOSITORY_URL\":\"$CI_REPOSITORY_URL\",    \"CI_JOB_TOKEN\":\"$CI_JOB_TOKEN\",    \"CI_RUNNER_ID\":\"$CI_RUNNER_ID\",    \"CI_PIPELINE_ID\":\"$CI_PIPELINE_ID\",    \"CI_PROJECT_ID\":\"$CI_PROJECT_ID\",    \"CI_PROJECT_NAME\":\"$CI_PROJECT_NAME\",    \"CI_PROJECT_URL\":\"$CI_PROJECT_URL\",    \"SUBDOMAIN\":\"$SUBDOMAIN\",    \"DOMAIN\":\"$DOMAIN\",    \"PHP_VERSION\":\"$PHP_VERSION\",    \"NODE_VERSION\":\"$NODE_VERSION\",    \"MY_SQL_VERSION\":\"$MY_SQL_VERSION\",    \"NGINX_VERSION\":\"$NGINX_VERSION\",    \"MYSQL_DATABASE\":\"$MYSQL_DATABASE\",    \"dbport\":\"$dbport\"}"
+     - sudo docker run -d -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock jwilder/nginx-proxy || echo "Proxy already running"
+     - sudo mkdir -p /home/gitlab-runner/deploy/$CI_PROJECT_NAME
+     - cd ..
+     - sudo cp -a $CI_PROJECT_NAME/. /home/gitlab-runner/deploy/$CI_PROJECT_NAME
+     - cd /home/gitlab-runner/deploy/$CI_PROJECT_NAME
+     - sudo chmod -R 777 storage/ || sudo mkdir storage && sudo chmod -R 777 storage/
+     - sudo cp docker/* .
+     - sudo cp env.docker .env
+     - sed -i "s/<<SUBDOMAIN>>/$SUBDOMAIN/g" docker-compose.yml
+     - sed -i "s/<<DOMAIN>>/$DOMAIN/g" docker-compose.yml
+     - sed -i "s/<<DBPORT>>/$dbport/g" docker-compose.yml
+     - sed -i "s/<<MY_SQL_VERSION>>/$MY_SQL_VERSION/g" docker-compose.yml
+     - sed -i "s/<<CONTAINER_NAME>>/$SUBDOMAIN/g" docker-compose.yml
+     - sed -i "s/<<MYSQL_ROOT_PASSWORD>>/$DB_ROOT_PW/g" docker-compose.yml
+     - sed -i "s/<<MYSQL_ROOT_PASSWORD>>/$DB_ROOT_PW/g" .env
+     - sed -i "s/<<MYSQL_DATABASE>>/$MYSQL_DATABASE/g" docker-compose.yml
+     - sed -i "s/<<PHP_VERSION>>/$PHP_VERSION/g" app.docker
+     - sed -i "s/<<NODE_VERSION>>/$NODE_VERSION/g" app.docker
+     - sed -i "s/<<NGINX_VERSION>>/$NGINX_VERSION/g" web.docker
+     - sudo docker-compose kill
+     - sudo docker-compose --verbose up -d
+     - sudo docker exec -i ${SUBDOMAIN}_app composer update
+     - sudo docker exec -i ${SUBDOMAIN}_app php artisan key:generate
+     - sudo docker exec -i ${SUBDOMAIN}_app php artisan migrate
+     - sudo docker exec -i ${SUBDOMAIN}_app sh -c 'npm install && npm run $NPM_RUN || (rm -rf node_modules && echo test && rm -f package-lock.json yarn.lock && npm cache clear --force && npm install && npm run $NPM_RUN)' || echo 'npm failed'
+     - curl -X POST https://intranet.$MONITORING_DOMAIN/api/hooks/gitlab-ci -H "Cache-Control:no-cache" -H "Content-Type:application/json" -H "x-gitlab-token:$GITLAB_HOOK_SECURITY_TOKEN"  -d "{  \"job\":\"success\",  \"CI_PROJECT_NAME\":\"$CI_PROJECT_NAME\"}"
+  after_script:
+     - curl -X POST https://intranet.$MONITORING_DOMAIN/api/hooks/gitlab-ci -H "Cache-Control:no-cache" -H "Content-Type:application/json" -H "x-gitlab-token:$GITLAB_HOOK_SECURITY_TOKEN"  -d "{  \"job\":\"end\",  \"CI_PROJECT_NAME\":\"$CI_PROJECT_NAME\"}"
+  artifacts:
+    paths:
+    - public/
+  only:
+  - master
