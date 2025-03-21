@@ -30,7 +30,7 @@
                             {{--  ONLY TEACHER --}}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('organizer-list', [app()->getLocale(), 'teacher']) }}">
-                                    <i class="fad fa-chalkboard-teacher fa-lg mx-2"></i>{{ trans_choice('app.teacher', 2) }}
+                                    <i class="fad fa-chalkboard-teacher fa-lg mx-2"></i>{{ trans_choice('admin-main-manu.teacher', 2) }}
                                 </a>
                             </li>
                         @endif
@@ -38,29 +38,29 @@
                             {{--  ONLY ADMIN AND DEV --}}
                             <li class="nav-item active">
                                 <a class="nav-link" href="{{ route('user-list-active', app()->getLocale()) }}">
-                                    <i class="fad fa-users fa-lg mx-2"></i>Users
+                                    <i class="fad fa-users fa-lg mx-2"></i>{{ __('admin-main-manu.users') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('organizer-list', [app()->getLocale(), 'teacher']) }}"><i class="fad fa-chalkboard-teacher fa-lg mx-2"></i>{{ trans_choice('app.teacher', 2) }}</a>
+                                <a class="nav-link" href="{{ route('organizer-list', [app()->getLocale(), 'teacher']) }}"><i class="fad fa-chalkboard-teacher fa-lg mx-2"></i>{{ trans_choice('admin-main-manu.teacher', 2) }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('organizer-list', [app()->getLocale(), 'group']) }}"><i class="fad fa-users-class fa-lg mx-2"></i>Groups</a>
+                                <a class="nav-link" href="{{ route('organizer-list', [app()->getLocale(), 'group']) }}"><i class="fad fa-users-class fa-lg mx-2"></i>{{ __('admin-main-manu.groups') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('location-list', app()->getLocale()) }}"><i class="fad fa-map fa-lg mx-2"></i>Locations</a>
+                                <a class="nav-link" href="{{ route('location-list', app()->getLocale()) }}"><i class="fad fa-map fa-lg mx-2"></i>{{ __('admin-main-manu.locations') }}</a>  
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('event-list', app()->getLocale()) }}"><i class="fad fa-calendar-star fa-lg mx-2"></i>Events</a>
+                                <a class="nav-link" href="{{ route('event-list', app()->getLocale()) }}"><i class="fad fa-calendar-star fa-lg mx-2"></i>{{ __('admin-main-manu.events') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('booking-list-current', app()->getLocale()) }}"><i class="fad fa-ticket-alt fa-lg mx-2"></i>Bookings</a>
+                                <a class="nav-link" href="{{ route('booking-list-current', app()->getLocale()) }}"><i class="fad fa-ticket-alt fa-lg mx-2"></i>{{ __('admin-main-manu.bookings') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fad fa-money-check-edit-alt fa-lg mx-2"></i>Payments</a>
+                                <a class="nav-link" href="#"><i class="fad fa-money-check-edit-alt fa-lg mx-2"></i>{{ __('admin-main-manu.payments') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="modal" data-target="#appMenu"><i class="fad fa-rocket fa-lg mx-2"></i>Apps</a>
+                                <a class="nav-link" href="#" data-toggle="modal" data-target="#appMenu"><i class="fad fa-rocket" style="font-size: 1.25em; line-height: .75em; vertical-align:-0.15em; margin-right: 6px !important;"></i>{{ __('admin-main-manu.app') }}</a>
                             </li>
                         @endif
                     </ul>
@@ -81,6 +81,10 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/en/">{{ __('app.english') }}</a>
                 <a class="dropdown-item" href="/de/">{{ __('app.german') }}</a>
+                <a class="dropdown-item" href="/cz/">{{ __('app.czech') }}</a>
+                <a class="dropdown-item" href="/fi/">{{ __('app.finnish') }}</a>
+                <a class="dropdown-item" href="/fr/">{{ __('app.french') }}</a>
+                <a class="dropdown-item" href="/jp/">{{ __('app.japanese') }}</a>
             </div>
         </div>
         {{-- User avatar dropdown --}}
@@ -97,7 +101,7 @@
                     <div class="dropdown-divider"></div>
                     @if (auth()->user()['rule_id'] >= 4)
                         <a class="dropdown-item" href="{{ route('user-account-iframe', app()->getLocale()) }}">{{ __('navbar.user-account')}}</a>
-                        <a class="dropdown-item" href="{{ route('booking-user-list', app()->getLocale()) }}">Bookings</a>
+                        <a class="dropdown-item" href="{{ route('booking-user-list', app()->getLocale()) }}">{{ __('navbar.bookings')}}</a>
                     @endif
                     <a class="dropdown-item" href="#" onclick="alert('is coming soon');">{{ __('navbar.settings') }}</a>
                     <a class="dropdown-item" href="{{ route('logout', app()->getLocale()) }}">{{ __('navbar.logout') }}</a>

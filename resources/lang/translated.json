@@ -1,0 +1,50 @@
+{
+    "users": {
+        "en": " ",
+        "de": " "
+    },
+    "teacher": {
+        "en": " ",
+        "de": " "
+    },
+    "groups": {
+        "en": " ",
+        "de": " "
+    },
+    "locations": {
+        "en": " ",
+        "de": " "
+    },
+    "events": {
+        "en": " ",
+        "de": " "
+    },
+    "bookings": {
+        "en": " ",
+        "de": " "
+    },
+    "payments": {
+        "en": " ",
+        "de": " "
+    },
+    "app": {
+        "en": " ",
+        "de": " "
+    },
+    "media_center": {
+        "en": " ",
+        "de": " "
+    },
+    "timeline": {
+        "en": " ",
+        "de": " "
+    },
+    "reports": {
+        "en": " ",
+        "de": " "
+    },
+    "translations": {
+        "en": " ",
+        "de": " "
+    }
+}

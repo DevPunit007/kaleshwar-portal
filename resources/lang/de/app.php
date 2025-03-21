@@ -3,7 +3,11 @@
 return [
     'language' => 'Sprache',
     'english' => 'Englisch',
-    'german' => 'Deutsch',
+    'german' => 'Deutsch', 
+    'czech' => 'Tschechisch',
+    'finnish' => 'finnisch',
+    'french' => 'Französisch',
+    'japanese' => 'Japanisch',
     'group' => 'Gruppe',
     'teacher' => 'Lehrer|Lehrer',
     'address' => 'Anschrift',

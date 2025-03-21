@@ -25,6 +25,7 @@ class EventController extends Controller
 {
     public function index(Request $request)
     {
+        // return "s";
         /*$events = Event::where('end_date', '>', date("Y-m-d"))->with('contactInformation', 'eventCategory', 'eventDetails', 'organizer', 'locationDetails', 'eventSections.eventSectionDetails');
         $eventCategories = EventCategory::all();
         $token = $request->get('token');
@@ -72,6 +73,7 @@ class EventController extends Controller
                     'eventCategories' => $eventCategories
                 ]);
             } else {*/
+                // return "d";
                 return view('pages.start');
             //}
         }

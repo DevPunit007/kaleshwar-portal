@@ -14,7 +14,7 @@ return [
     'reactivate-link' => 'Reactivate here.',
     'register-text' => 'If you do not already have an account?',
     'register-link' => 'Register here.',
-    'note' => '',
+    'note' => 'test123',
 
     'language' => [
         'en' => 'English',

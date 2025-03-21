@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -22,15 +23,20 @@
 <body>
 <div class="app-admin-wrap layout-horizontal-bar clearfix">
     @guest
-        <div class="d-flex flex-column">
-            @yield('content')
-        </div>
-    @else
-        @include('partials.navbar')
-        @include('templates.modal')
         <div class="main-content-wrap d-flex flex-column" id="print-area">
             @yield('content')
         </div>
+    @else
+        <div class="navbar-container">
+            @include('partials.navbar')
+        </div>
+
+        @include('templates.modal')
+
+        <div class="main-content-wrap d-flex flex-column" id="print-area">
+            @yield('content')
+        </div>
+
     @endguest
 
     @if (auth()->user()['rule_id'] >= 4)

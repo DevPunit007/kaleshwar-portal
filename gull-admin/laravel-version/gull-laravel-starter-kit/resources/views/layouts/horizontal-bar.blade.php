@@ -4,13 +4,9 @@
             <div class=" topnav rtl-ps-none" id="" data-perfect-scrollbar data-suppress-scroll-x="true">
                 <ul class="menu float-left">
                     <li class="{{ request()->is('starter/*') ? 'active' : '' }}">
-
                         <div>
-
-
                             <div>
                                 <label class="toggle" for="drop-2">
-
                                     Starter Kits
                                 </label>
                                 <a href="#">
