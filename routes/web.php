@@ -269,17 +269,22 @@ Route::group(['prefix' => '{language}'], function() {
     // ################# Reports ####################
     // ##############################################
 
-Route::get('/audits', 'AuditsController@index')->name('show-audits')->middleware('auth');
+    Route::get('/audits', 'AuditsController@index')->name('show-audits')->middleware('auth');
+    
+    // ##############################################
+    // ################# Translation ####################
+    // ##############################################
+    Route::get('/translation/list', 'LanguageLineController@index')->name('translation-list')->middleware('auth');
+    Route::get('/translation/add', 'LanguageLineController@AddTranslation')->name('translation-add')->middleware('auth');
+    Route::post('/translation/add', 'LanguageLineController@storeTranslation')->name('store-translation')->middleware('auth');
+    Route::get('/translation/edit/{id}', 'LanguageLineController@edit')->name('translation-edit')->middleware('auth');
+    Route::post('/translation/edit/{id}', 'LanguageLineController@update')->name('update-translation')->where('language', '[a-zA-Z]{2}')->middleware('auth');
+    Route::delete('/translation/delete/{id}', 'LanguageLineController@destroy')->name('translation-delete')->middleware('auth');
+    Route::post('/translation/import', 'LanguageLineController@importData')->name('translation-import')->middleware('auth');
+    Route::get('/translation/download', 'LanguageLineController@downloadFile')->name('translation-download')->middleware('auth');
+    Route::post('/translation/upload', 'LanguageLineController@uploadFile')->name('translation-upload')->middleware('auth');
+    Route::post('/translations/upload-import', 'LanguageLineController@uploadAndImport')->name('translations-upload-import')->middleware('auth');
 
-Route::get('/translation/list', 'LanguageLineController@index')->name('translation-list')->middleware('auth');
-Route::get('/translation/add', 'LanguageLineController@AddTranslation')->name('translation-add')->middleware('auth');
-Route::post('/translation/add', 'LanguageLineController@storeTranslation')->name('store-translation')->middleware('auth');
-Route::get('/translation/edit/{id}', 'LanguageLineController@edit')->name('translation-edit')->middleware('auth');
-Route::post('/translation/edit/{id}', 'LanguageLineController@update')->name('update-translation')->where('language', '[a-zA-Z]{2}')->middleware('auth');
-Route::delete('/translation/delete/{id}', 'LanguageLineController@destroy')->name('translation-delete')->middleware('auth');
-Route::post('/translation/import', 'LanguageLineController@importData')->name('translation-import')->middleware('auth');
-Route::get('/translation/download', 'LanguageLineController@downloadFile')->name('translation-download')->middleware('auth');
-Route::post('/translation/upload', 'LanguageLineController@uploadFile')->name('translation-upload')->middleware('auth');
 
 });
 
