@@ -2,12 +2,6 @@
 
 @section('content')
 @include('pages.event.help-partials.list')
-<!-- Bootstrap CSS (If not already included) -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Bootstrap Icons for Better UI -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-<!-- Bootstrap JS (Required for modal to work) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <div class="container-fluid">
     <div class="card">
@@ -97,7 +91,7 @@
                 @endif
                 </tbody>
             </table>
-            
+
             <!-- Upload & Import Modal -->
             @include('partials.uploadmodal')
         </div>
