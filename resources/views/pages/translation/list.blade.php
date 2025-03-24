@@ -97,6 +97,7 @@
                 @endif
                 </tbody>
             </table>
+            
             <!-- Upload & Import Modal -->
             @include('partials.uploadmodal')
         </div>
