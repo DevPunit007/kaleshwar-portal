@@ -1,4 +1,4 @@
-<!-- Upload & Import Modal -->
+
 <div class="modal fade" id="uploadImportModal" tabindex="-1" aria-labelledby="uploadImportModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content bg-light border-0 shadow-sm">
