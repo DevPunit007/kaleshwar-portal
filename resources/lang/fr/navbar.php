@@ -4,5 +4,6 @@ return [
     'user-account' => 'User Account',
     'bookings' => 'Bookings',
     'settings' => 'Settings',
-    'logout' => 'Logout'
+    'logout' => 'Logout',
+	'test456' => '4556'
 ];
